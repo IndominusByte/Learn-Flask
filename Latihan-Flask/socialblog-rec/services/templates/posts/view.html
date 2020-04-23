@@ -1,0 +1,41 @@
+{% include 'base.html' %}
+{% block content %}
+<div class="jumbotron jumbotron-fluid text-center">
+  <div class="container">
+    <h1 class="display-5">{{post.title}}</h1>
+    <p class="lead">written by {{post.user.username}}</p>
+    <p>Published : {{post.created_at.strftime('%Y-%m-%d')}}</p>
+    <p>{{post.text}}</p>
+
+    {% if current_user.id == post.user.id%}
+    <a href="{{url_for('posts.edit',id=post.id)}}" class="btn btn-info" role="button">Edit</a>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+      Delete
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Are you sure want to delete ?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <a href="{{url_for('posts.delete',id=post.id)}}" class="btn btn-primary" role="button">Save changes</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+{% endblock %}

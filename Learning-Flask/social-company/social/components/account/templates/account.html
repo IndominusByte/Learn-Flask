@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron jumbotron-fluid text-center">
+  <div class="container">
+    <h1 class="display-5">Welcome back {{current_user.username}}</h1>
+    <img src="{{url_for('static',filename='avatar/{}'.format(current_user.avatar))}}" class="rounded mx-auto d-block" alt="" height="180">
+    <p class="lead mt-2">{{current_user.email}}</p>
+  </div>
+</div>
+<form class="container mb-5" method="POST" enctype="multipart/form-data">
+  {{form.csrf_token}}
+  <div class="form-group">
+    {{form.username.label}}
+    {{form.username(class='form-control')}}
+  </div>
+  <div class="form-group">
+    {{form.email.label}}
+    {{form.email(class='form-control')}}
+  </div>
+  <div class="form-group">
+    {{form.upload.label}}
+    {{form.upload(class='form-control-file')}}
+    {{form.upload.errors[0]}}
+  </div>
+  {{form.submit(class='btn btn-primary')}}
+</form>
+{% endblock %}

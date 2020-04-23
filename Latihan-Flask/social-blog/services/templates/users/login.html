@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <form class="mt-5" method="POST">
+    {{form.csrf_token}}
+    <div class="form-group">
+      {{form.email.label}}
+      {% if form.errors.email %}
+        {{form.email(class='form-control is-invalid')}}
+        <div class="invalid-feedback">
+          {{form.errors.email[0]}}
+        </div>
+      {% else %}
+        {{form.email(class='form-control')}}
+      {% endif %}
+    </div>
+    <div class="form-group">
+      {{form.password.label}}
+      {% if form.errors.password %}
+        {{form.password(class='form-control is-invalid')}}
+        <div class="invalid-feedback">
+          {{form.errors.password[0]}}
+        </div>
+      {% else %}
+        {{form.password(class='form-control')}}
+      {% endif %}
+    </div>
+      {{form.submit(class='btn btn-primary')}}
+  </form>
+  {% with messages = get_flashed_messages() %}
+    {% for message in messages %}
+    <div class="alert alert-warning mt-4" role="alert">
+      {{message}}
+    </div>
+    {% endfor %}
+  {% endwith %}
+</div>
+{% endblock %}

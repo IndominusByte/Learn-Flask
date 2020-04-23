@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron jumbotron-fluid text-center">
+  <div class="container">
+    <h1 class="display-4">{{post.title}}</h1>
+    <p class="lead">writeen by {{post.user.username}}</p>
+    <p class="lead">Published : {{post.timestamp.strftime('%Y-%m-%d') }}</p>
+    <p class="lead">{{post.text}}</p>
+    {% if current_user.id == post.user.id %}
+    <a href="{{url_for('post.edit',id=post.id)}}" class="btn btn-primary" role="button">Update</a>
+    <a href="#" class="btn btn-danger" role="button">Delete</a>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

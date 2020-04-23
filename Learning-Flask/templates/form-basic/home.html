@@ -1,0 +1,13 @@
+<p>
+  {% if name %}
+  your name is {{name}}
+  {% else %}
+  please field your name on below 
+  {% endif %}
+</p>
+
+<form action="{{url_for('index')}}" method="POST">
+  {{form.csrf_token}}
+  {{form.name.label}} {{form.name(size=20)}} <br>
+  {{form.submit()}}
+</form>

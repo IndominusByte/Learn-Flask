@@ -1,0 +1,9 @@
+{% extends "inheritance/base.html" %}
+
+{% block content %}
+<h4>welcome back {{name}}</h4>
+{% endblock %}
+
+{% block bawah %}
+<a href="{{url_for('static',filename='pictures/puppy.jpeg')}}">this link to puppy</a>
+{% endblock %}

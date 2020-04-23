@@ -1,0 +1,50 @@
+{% include 'base.html' %}
+{% block content %}
+<div class="jumbotron jumbotron-fluid text-center">
+  <div class="container">
+    <h1 class="display-5">Welcome {{current_user.username}}</h1>
+    <img src="{{url_for('static',filename='avatar/{}'.format(current_user.avatar))}}" class="rounded mx-auto d-block" alt="" height="180">
+    <p class="lead mt-2">{{current_user.email}}</p>
+  </div>
+</div>
+<form class="container mb-5" method="POST" enctype="multipart/form-data">
+  {{form.csrf_token}}
+  <div class="form-group">
+    {{form.username.label}}
+    {% if form.errors.username %}
+    {{form.username(class='form-control is-invalid')}}
+      <div class="invalid-feedback">
+        {{form.errors.username[0]}}
+      </div>
+    {% else %}
+    {{form.username(class='form-control')}}
+    {% endif %}
+  </div>
+  <fieldset disabled>
+  <div class="form-group">
+    {{form.email.label}}
+    {% if form.errors.email %}
+    {{form.email(class='form-control is-invalid')}}
+      <div class="invalid-feedback">
+        {{form.errors.email[0]}}
+      </div>
+    {% else %}
+    {{form.email(class='form-control')}}
+    {% endif %}
+  </div>
+  </fieldset>
+  <div class="form-group">
+    {{form.upload.label}}
+    {% if form.errors.upload %}
+      {{form.upload(class='form-control-file is-invalid')}}
+      <div class="invalid-feedback">
+        {{form.errors.upload[0]}}
+      </div>
+    {% else %}
+      {{form.upload(class='form-control-file')}}
+    {% endif %}
+  </div>
+  {{form.submit(class='btn btn-primary')}}
+</form>
+
+{% endblock %}

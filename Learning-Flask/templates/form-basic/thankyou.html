@@ -1,0 +1,19 @@
+{% extends "form-basic/base.html" %}
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  {{message}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+
+<h1>Thankyou here is the info you gave us:</h1>
+<ul>
+  {% for key,value in session['puppy'].items() %}
+  <li>{{key}}: {{value}}</li>
+  {% endfor %}
+</ul>
+{% endblock %}

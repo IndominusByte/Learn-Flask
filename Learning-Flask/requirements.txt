@@ -1,0 +1,14 @@
+Flask
+requests
+Flask-WTF
+Flask-SQLAlchemy
+Flask-Migrate
+flask-bcrypt
+flask-login
+flask-dance
+flask-restful
+Flask-JWT
+flask_cors
+is-safe-url
+python-dotenv
+python-slugify

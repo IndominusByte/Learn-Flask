@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    {{test}}
+    <p class="lead">Let see how your performance!</p>
+    {% if not upper or not lower or not number %}
+    {{number}}
+    <ul>
+      {% if not upper %}<li>you did not use an uppercase character</li>{% endif %}
+      {% if not lower %}<li>you did not use an lower character</li>{% endif %}
+      {% if not number %}<li>you did not use an number on last character</li>{% endif %}
+    </ul>
+    {% else %}
+    <p class="lead">You username passed 3 requirements!</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

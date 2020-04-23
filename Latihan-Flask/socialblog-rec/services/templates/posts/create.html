@@ -1,0 +1,30 @@
+{% include 'base.html' %}
+{% block content %}
+<form method="POST" class="container mt-5">
+  {{form.csrf_token}}
+  <div class="form-group">
+    {{form.title.label}}
+    {% if form.errors.title %}
+    {{form.title(class='form-control is-invalid')}}
+    <div class="invalid-feedback">
+      {{form.errors.title[0]}}
+    </div>
+    {% else %}
+    {{form.title(class='form-control')}}
+    {% endif %}
+  </div>
+  <div class="form-group">
+    {{form.text.label}}
+    {% if form.errors.text %}
+    {{form.text(class='form-control is-invalid')}}
+    <div class="invalid-feedback">
+      {{form.errors.text[0]}}
+    </div>
+    {% else %}
+    {{form.text(class='form-control')}}
+    {% endif %}
+  </div>
+  {{form.submit(class='btn btn-primary')}}
+</form>
+
+{% endblock %}

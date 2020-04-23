@@ -1,0 +1,51 @@
+{% include 'base.html' %}
+{% block content %}
+<form class="container mt-5" method="POST">
+  {{form.csrf_token}}
+  <div class="form-group">
+    {{form.username.label}}
+    {% if form.errors.username %}
+    {{form.username(class='form-control is-invalid')}}
+      <div class="invalid-feedback">
+        {{form.errors.username[0]}}
+      </div>
+    {% else %}
+    {{form.username(class='form-control')}}
+    {% endif %}
+  </div>
+  <div class="form-group">
+    {{form.email.label}}
+    {% if form.errors.email %}
+    {{form.email(class='form-control is-invalid')}}
+      <div class="invalid-feedback">
+        {{form.errors.email[0]}}
+      </div>
+    {% else %}
+    {{form.email(class='form-control')}}
+    {% endif %}
+  </div>
+  <div class="form-group">
+    {{form.password.label}}
+    {% if form.errors.password %}
+    {{form.password(class='form-control is-invalid')}}
+      <div class="invalid-feedback">
+        {{form.errors.password[0]}}
+      </div>
+    {% else %}
+    {{form.password(class='form-control')}}
+    {% endif %}
+  </div>
+  <div class="form-group">
+    {{form.password2.label}}
+    {% if form.errors.password2 %}
+    {{form.password2(class='form-control is-invalid')}}
+      <div class="invalid-feedback">
+        {{form.errors.password2[0]}}
+      </div>
+    {% else %}
+    {{form.password2(class='form-control')}}
+    {% endif %}
+  </div>
+  {{form.submit(class='btn btn-primary')}}
+</form>
+{% endblock %}
