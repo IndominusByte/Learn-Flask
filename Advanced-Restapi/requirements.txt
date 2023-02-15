@@ -6,7 +6,7 @@ flask-restful
 flask-jwt-extended
 flask-cors
 requests-oauthlib==1.1.0
-werkzeug==0.16.1
+werkzeug==2.2.3
 Flask-OAuthLib
 requests
 marshmallow
